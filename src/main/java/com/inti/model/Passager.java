@@ -1,7 +1,5 @@
 package com.inti.model;
 import java.util.*;
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -77,3 +75,4 @@ public class Passager {
 }
 	
 	
+

@@ -26,6 +26,10 @@ public class Reservation {
     private LocalDate date;
     
     @ManyToOne
+    @JoinColumn(name="idVol")
+    private Vol vol;
+    
+    @ManyToOne
     @JoinColumn(name = "idpassager")
     private Passager passager;
 
@@ -105,5 +109,6 @@ public class Reservation {
     
     
     
+
 
 }

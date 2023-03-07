@@ -21,8 +21,11 @@ public class Aeroport {
     private int idAer;
     private String nom;
     
-    @OneToMany(mappedBy = "aeroport", targetEntity = Vol.class)
-    private List<Aeroport> listeAeroport; 
+    
+    
+    @OneToMany(mappedBy = "vol", targetEntity = Vol.class)
+    private List<Vol> listeVol;
+    
     
     @OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idV", nullable = false)
@@ -33,10 +36,10 @@ public class Aeroport {
     
     
 
-	public Aeroport(String nom, List<Aeroport> listeAeroport) {
+	public Aeroport(String nom) {
 		super();
 		this.nom = nom;
-		this.listeAeroport = listeAeroport;
+		
 	}
 
 	
@@ -49,20 +52,11 @@ public class Aeroport {
 		this.nom = nom;
 	}
 
-	public List<Aeroport> getListeAeroport() {
-		return listeAeroport;
-	}
-
-	public void setListeAeroport(List<Aeroport> listeAeroport) {
-		this.listeAeroport = listeAeroport;
-	}
+	
 
 
 
-	@Override
-	public String toString() {
-		return "Aeroport [idAer=" + idAer + ", nom=" + nom + ", listeAeroport=" + listeAeroport + "]";
-	}
+	
     
     
 
