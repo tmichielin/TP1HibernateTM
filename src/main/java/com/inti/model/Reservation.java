@@ -19,13 +19,15 @@ public class Reservation {
     private int numero;
     private LocalDate date;
     
+    private Vol vol;
+    
+    
+    
     @ManyToOne
     @JoinColumn(name = "idClient")
 	private Client client;
 
-    /**
-     * Default constructor
-     */
+  
     public Reservation() {
     }
 
