@@ -3,11 +3,15 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,12 +26,17 @@ public class Vol {
     private LocalTime heureDepart;
     private LocalTime heureArrivee;
     
-    private CompagnieAerienne compagnieaerienne;
+    @ManyToMany
+    @JoinTable(name="Vol_CA",
+    joinColumns = @JoinColumn(name = "idV"), 
+	inverseJoinColumns = @JoinColumn(name = "idCA"))
+    private List<CompagnieAerienne> listeCompagnieAerienne;
     
-    @OneToMany
-    @JoinColumn
+    @OneToMany(mappedBy = "idvol")
     private List<Reservation> listeReservation;
     
+    @ManyToOne
+    @JoinColumn(name="idVol")
     private Aeroport aeroport;
 
     public Vol() {
@@ -99,5 +108,4 @@ public class Vol {
 		return "Vol [idVol=" + idVol + ", dateDepart=" + dateDepart + ", dateArrivee=" + dateArrivee + ", heureDepart="
 				+ heureDepart + ", heureArrivee=" + heureArrivee + "]";
 	}
-
 }
