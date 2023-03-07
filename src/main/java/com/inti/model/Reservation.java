@@ -17,22 +17,29 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idReservation;
+
+	@ManyToOne
+	@JoinColumn(name = "idClient")
+	private Client client;
 	
     private int numero;
     private LocalDate date;
     
     @ManyToOne
-    @JoinColumn(name = "idClient")
-	private Client client;
+    @JoinColumn(name = "idpassager")
+    private Passager passager;
 
-    /**
-     * Default constructor
-     */
-    public Reservation() {
+ Reservation() {
     }
-
-    
-    public void Annuler() {
+   
+    public Reservation(int numero, LocalDate date, Client client, Passager passager) {
+		super();
+		this.numero = numero;
+		this.date = date;
+		this.client = client;
+		this.passager = passager;
+	}
+	public void Annuler() {
         // TODO implement here
     }
 
@@ -42,32 +49,17 @@ public class Reservation {
     }
 
 
-	public Reservation(int numero, LocalDate date, Client client) {
-		super();
-		this.numero = numero;
-		this.date = date;
-		this.client = client;
-	}
-
-
-	public int getIdReservation() {
-		return idReservation;
-	}
-
-
-	public void setIdReservation(int idReservation) {
-		this.idReservation = idReservation;
-	}
-
 
 	public int getNumero() {
 		return numero;
 	}
 
 
+
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
+
 
 
 	public LocalDate getDate() {
@@ -80,9 +72,11 @@ public class Reservation {
 	}
 
 
+
 	public Client getClient() {
 		return client;
 	}
+
 
 
 	public void setClient(Client client) {
@@ -90,13 +84,24 @@ public class Reservation {
 	}
 
 
+
+	public Passager getPassager() {
+		return passager;
+	}
+
+
+
+	public void setPassager(Passager passager) {
+		this.passager = passager;
+	}
+
 	@Override
 	public String toString() {
-		return "Reservation [idReservation=" + idReservation + ", numero=" + numero + ", date=" + date + ", client="
-				+ client + "]";
+		return "Reservation [client=" + client + ", numero=" + numero + ", date=" + date + ", passager=" + passager
+				+ "]";
 	}
-    
-    
+
+
     
     
     
