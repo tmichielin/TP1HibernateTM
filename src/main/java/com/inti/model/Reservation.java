@@ -16,10 +16,12 @@ public class Reservation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idReservation;
 
 	@ManyToOne
 	@JoinColumn(name = "idClient")
 	private Client client;
+	
     private int numero;
     private LocalDate date;
     
@@ -103,4 +105,5 @@ public class Reservation {
     
     
     
+
 }
