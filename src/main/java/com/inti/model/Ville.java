@@ -1,25 +1,27 @@
 package com.inti.model;
 import java.util.*;
 
-/**
- * 
- */
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Ville {
 
-    /**
-     * Default constructor
-     */
+ 
     public Ville() {
     }
-
-    /**
-     * 
-     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idVille;
-
-    /**
-     * 
-     */
     private String nomVille;
-
+    
+    @OneToOne(mappedBy = "ville")
+    private Aeroport aeroport;
 }

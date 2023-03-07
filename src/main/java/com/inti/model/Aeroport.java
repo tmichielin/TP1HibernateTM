@@ -1,12 +1,14 @@
 package com.inti.model;
 import java.util.*;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -21,6 +23,10 @@ public class Aeroport {
     
     @OneToMany(mappedBy = "aeroport", targetEntity = Vol.class)
     private List<Aeroport> listeAeroport; 
+    
+    @OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idV", nullable = false)
+    private Ville ville ;
     
     public Aeroport() {
     }
