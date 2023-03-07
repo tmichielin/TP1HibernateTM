@@ -1,6 +1,7 @@
 package com.inti.model;
 import java.util.*;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -71,7 +72,8 @@ public class Passager {
 	@Override
 	public String toString() {
 		return "Passager [idP=" + idP + ", nom=" + nom + ", prenom=" + prenom + ", reservation=" + reservation + "]";
+	
 	}
-	
-	
 }
+	
+	

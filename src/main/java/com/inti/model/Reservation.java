@@ -16,28 +16,20 @@ public class Reservation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@ManyToOne
+	@JoinColumn(name = "idClient")
+	private Client client;
     private int numero;
     private LocalDate date;
-    
-    @ManyToOne
-    @JoinColumn(name = "idClient")
-	private Client client;
     
     @ManyToOne
     @JoinColumn(name = "idpassager")
     private Passager passager;
 
-    /**
-     * Default constructor
-     */
-    public Reservation() {
+ Reservation() {
     }
-
-
-    
-    
-    
-    
+   
     public Reservation(int numero, LocalDate date, Client client, Passager passager) {
 		super();
 		this.numero = numero;
@@ -45,12 +37,6 @@ public class Reservation {
 		this.client = client;
 		this.passager = passager;
 	}
-
-
-
-
-
-
 	public void Annuler() {
         // TODO implement here
     }
@@ -62,15 +48,9 @@ public class Reservation {
 
 
 
-
-
-
 	public int getNumero() {
 		return numero;
 	}
-
-
-
 
 
 
@@ -80,24 +60,14 @@ public class Reservation {
 
 
 
-
-
-
 	public LocalDate getDate() {
 		return date;
 	}
 
 
-
-
-
-
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-
-
-
 
 
 
@@ -107,15 +77,9 @@ public class Reservation {
 
 
 
-
-
-
 	public void setClient(Client client) {
 		this.client = client;
 	}
-
-
-
 
 
 
@@ -125,13 +89,18 @@ public class Reservation {
 
 
 
-
-
-
 	public void setPassager(Passager passager) {
 		this.passager = passager;
 	}
 
+	@Override
+	public String toString() {
+		return "Reservation [client=" + client + ", numero=" + numero + ", date=" + date + ", passager=" + passager
+				+ "]";
+	}
+
+
+    
     
     
 }
